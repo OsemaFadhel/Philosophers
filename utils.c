@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 22:54:13 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/05/31 17:01:03 by ofadhel          ###   ########.fr       */
+/*   Created: 2023/05/31 17:00:18 by ofadhel           #+#    #+#             */
+/*   Updated: 2023/05/31 17:01:04 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
-
-# include "stdio.h"
-# include "stdlib.h"
-# include "unistd.h"
-# include "pthread.h"
-# include "sys/time.h"
-
-typedef struct s_philo
+int	ft_atoi(const char	*str)
 {
-	int	philos;
-	int	ttd;
-	int	tte;
-	int	tts;
-	int	times_eat;
+	int					i;
+	int					neg;
+	unsigned long int	num;
 
-}				t_philo;
-
-int	ft_atoi(const char	*str);
-
-void	init(t_philo *philo, int ac, char **av);
-int		check_args(int ac, char **av);
-
-#endif
+	i = 0;
+	neg = 1;
+	num = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	{
+		i++;
+	}
+	if (str[i] == '-')
+	{
+		neg = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num *= 10;
+		num += str[i] - 48;
+		i++;
+	}
+	return (num * neg);
+}
