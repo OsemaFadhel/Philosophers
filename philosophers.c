@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 23:03:30 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/05/31 17:05:58 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/06/03 13:49:00 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init(t_philo *philo, int ac, char **av)
 	else
 		philo->times_eat = -1;
 }
+
 int	check_args(int ac, char **av)
 {
 	int	i;
@@ -55,7 +56,7 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		init(&philo, ac, av);
-		//start(&philo);
+		start(&philo);
 	}
 	else
 		printf("Error: Invalid number of arguments\n");
