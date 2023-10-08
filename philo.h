@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/08 22:52:23 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/09 00:00:52 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,15 @@ typedef struct s_philo
 	int				t_eat;
 	int				t_sleep;
 	int				nb_eat;
+	int				is_eating;
+	int				is_sleeping;
+	int				is_thinking;
+	int				is_dead;
+	int				nb_meals;
+	int				last_meal;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*print;
 
 }				t_philo;
 
