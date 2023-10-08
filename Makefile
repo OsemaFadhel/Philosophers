@@ -5,28 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/31 16:57:31 by ofadhel           #+#    #+#              #
-#    Updated: 2023/05/31 17:06:33 by ofadhel          ###   ########.fr        #
+#    Created: 2023/10/08 22:32:35 by ofadhel           #+#    #+#              #
+#    Updated: 2023/10/08 23:13:25 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME 	= 	philo
 
-SRCS = philosophers.c utils.c
+SRC		=	main.c errors.c utils.c
 
-OBJS = $(SRCS:.c=.o)
+CC 		=	 gcc
 
-CC = gcc
+FLAGS 	= 	-Wall -Wextra -Werror
 
-CFLAGS = -Wall -Wextra -Werror
+OBJ 	= 	$(SRC:.c=.o)
 
-all:
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+RM 		= 	rm -rf
 
-clean:
-	rm -f $(OBJS)
+all		: 	$(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+$(NAME)	: 	$(OBJ)
+			$(CC) $(FLAGS) -o $(NAME) $(OBJ)
+			@echo ""
+			@echo "\033[0;36m  PHILOSOPHERS\033[0m"
+			@echo ""
 
-re: fclean all
+clean	:
+			$(RM) $(OBJ)
+
+fclean	: 	clean
+			$(RM) $(NAME) $(OBJ)
+			@echo "\033[0;32mFiles Removed!\033[0m"
+
+re		:	fclean all
+
+.PHONY	: 	all clean fclean re
