@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/08 23:13:03 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:01:43 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ int	main(int ac, char **av)
 	{
 		if (!check_errors(ac, av))
 			return (0);
-		if (!init_rules(&rules, ac, av))
-			return (0);
-		if (!init_philo(&rules))
+		if (!init(&rules, ac, av))
 			return (0);
 		if (!start_threads(&rules))
 			return (0);
