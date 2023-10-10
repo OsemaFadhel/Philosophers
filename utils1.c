@@ -6,11 +6,13 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 23:03:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/08 23:31:21 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/10 18:27:26 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	print();
 
 int	gettime(void)
 {

@@ -6,13 +6,15 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/10 18:02:59 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/10 18:39:39 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //return 1 = close
 //return 0 = continue
 
+//maybe create a print function so there will not be data races
+//				printf("%d...", time, id, message(eat, dead...));
 #include "philo.h"
 
 int	check_dead(t_rules *rules, int i)
@@ -41,20 +43,30 @@ int	end_meals(t_rules *rules)
 	return (1);
 }
 
-void	monitor(t_rules *rules)
+void	*monitor(void *arg)
 {
-	int	i;
+	t_rules	*monitor;
+	int		i;
+	int		flag;
 
+	flag = 0;
+	monitor = (t_rules *)arg;
 	while (1)
 	{
 		i = 0;
-		while (i < rules->philo->nb_philo)
+		while (i < monitor->philo->nb_philo)
 		{
-			if (check_dead(rules, i))
-				return ;
+			if (check_dead(monitor, i))
+			{
+				flag = 1;
+				break ;
+			}
 			i++;
 		}
-		if (end_meals(rules))
-			return ;
+		if (end_meals(monitor))
+			flag = 1;
+		if (flag == 1)
+			break ;
 	}
+	return (arg);
 }
