@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/12 19:00:15 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/12 19:31:40 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_philo
 typedef struct s_rules
 {
 	int				dead_flag;
+	pthread_mutex_t	print;
 	t_philo			*philo;
 }				t_rules;
 
