@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/10 18:39:39 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/12 18:56:39 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_dead(t_rules *rules, int i)
 	if (gettime() - rules->philo[i].last_meal > rules->philo[i].t_die)
 	{
 		pthread_mutex_lock(&rules->philo[i].print);
-		printf("%d %d died\n", gettime() - rules->philo[i].t_start, i + 1);
+		print(gettime() - rules->philo[i].t_start, i + 1, " died\n", rules);
 		rules->dead_flag = 1;
 		return (1);
 	}
