@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 23:03:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/12 19:22:37 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/13 21:44:02 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	ft_atoi(const char	*str)
 	return (num * neg);
 }
 
-void	print(int time, int i, char *message, t_rules *rules)
+void	print(int time, int i, char *message, t_philo *philo)
 {
-	pthread_mutex_lock(&rules->philo[i].print);
+	pthread_mutex_lock(philo[i].print);
 	printf("%d %d %s", time, i + 1, message);
-	pthread_mutex_unlock(&rules->philo[i].print);
+	pthread_mutex_unlock(philo[i].print);
 }
 
 int	ft_usleep(int time)

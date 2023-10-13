@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:08:20 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/12 18:50:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/13 21:47:09 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,25 @@ int	check_dead_flag(t_rules *rules)
 	return (0);
 }
 
-void	philo_eat();
+void	philo_eat(t_philo *philo)
+{
+	pthread_mutex_lock(philo->r_fork);
+	print(gettime() - philo->t_start, philo->id, " has taken a fork\n", philo);
+	pthread_mutex_lock(philo->l_fork);
+	print(gettime() - philo->t_start, philo->id, " has taken a fork\n", philo);
+	print(gettime() - philo->t_start, philo->id, " is eating\n", philo);
+	philo->last_meal = gettime();
+	ft_usleep(philo->t_eat);
+	philo->meals_count++;
+	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_unlock(philo->l_fork);
+}
 
-void	philo_sleep();
+/*void	philo_sleep();
 
-void	philo_think();
+void	philo_think();*/
 
-void	*philo_routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*philo;
 	t_rules	*dead;
@@ -33,11 +45,11 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->id % 2 != 0)
 		ft_usleep(1);
-	while (check_dead_flag(dead))
+	while (!check_dead_flag(dead))
 	{
 		philo_eat(philo);
-		philo_sleep(philo);
-		philo_think(philo);
+		//philo_sleep(philo);
+		//philo_think(philo);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/12 19:31:40 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/13 21:44:07 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+# define MAX_PHILOSOPHERS 200
 
 //structures
 
@@ -45,7 +47,9 @@ typedef struct s_rules
 {
 	int				dead_flag;
 	pthread_mutex_t	print;
+	pthread_mutex_t	forks[MAX_PHILOSOPHERS];
 	t_philo			*philo;
+
 }				t_rules;
 
 //-------------functions-----------------
@@ -53,6 +57,9 @@ typedef struct s_rules
 //utils
 
 int				gettime(void);
+int				ft_usleep(int time);
+void			print(int time, int i, char *message, t_philo *rules);
+int				ft_atoi(const char	*str);
 
 //monitor
 
@@ -61,5 +68,9 @@ int				end_meals(t_rules *rules);
 void			monitor(t_rules *rules);
 
 //routine
+
+int				check_dead_flag(t_rules *rules);
+void			*routine(void *arg);
+void			philo_eat(t_philo *philo);
 
 #endif
