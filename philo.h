@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 17:11:49 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 18:46:54 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@
 
 typedef struct s_philo
 {
+	pthread_t		thread;
 	int				id;
 	int				nb_philo;
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
 	int				is_eating;
-	int				dead;
+	int				*dead;
 	int				nb_meals;
 	int				meals_count;
 	int				last_meal;
@@ -45,6 +46,7 @@ typedef struct s_philo
 
 typedef struct s_rules
 {
+	pthread_t		god;
 	int				dead_flag;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks[MAX_PHILOSOPHERS];
@@ -60,15 +62,19 @@ int				ft_usleep(int time);
 void			print(int time, int i, char *message, t_philo *rules);
 int				ft_atoi(const char	*str);
 
+//threads
+
+int				threads(t_rules *monitor, t_philo *philo);
+
 //monitor
 
 int				check_dead(t_rules *rules, int i);
 int				end_meals(t_rules *rules);
-void			monitor(t_rules *rules);
+void			*monitor(void *arg);
 
 //routine
 
-int				check_dead_flag(t_rules *rules);
+int				check_dead_flag(t_philo *rules);
 void			*routine(void *arg);
 void			philo_eat(t_philo *philo);
 

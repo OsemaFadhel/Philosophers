@@ -6,13 +6,13 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 22:32:35 by ofadhel           #+#    #+#              #
-#    Updated: 2023/10/13 21:31:35 by ofadhel          ###   ########.fr        #
+#    Updated: 2023/10/14 18:19:08 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= 	philo
 
-SRC		=	main.c errors.c utils1.c routine.c
+SRC		=	main.c errors.c utils1.c routine.c thread.c
 
 CC 		=	 gcc
 

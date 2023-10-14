@@ -6,15 +6,16 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:08:20 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/13 21:47:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 18:56:24 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_dead_flag(t_rules *rules)
+int	check_dead_flag(t_philo *rules)
 {
-	if (rules->dead_flag == 1)
+	printf("philo dead\n");
+	if (*rules->dead == 1)
 		return (1);
 	return (0);
 }
@@ -40,13 +41,14 @@ void	philo_think();*/
 void	*routine(void *arg)
 {
 	t_philo	*philo;
-	t_rules	*dead;
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 != 0)
 		ft_usleep(1);
-	while (!check_dead_flag(dead))
+	printf("philo %d rout\n", philo->id);
+	while (!check_dead_flag(philo))
 	{
+		printf("philo rout1\n");
 		philo_eat(philo);
 		//philo_sleep(philo);
 		//philo_think(philo);

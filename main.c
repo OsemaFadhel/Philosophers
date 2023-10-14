@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 17:42:01 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 18:55:31 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 		philo[i].id = i + 1;
 		init_2(rules, philo, i, av);
 		philo[i].is_eating = 0;
-		philo[i].dead = 0;
+		philo[i].dead = &rules->dead_flag;
 		if (av[5])
 			philo[i].nb_meals = ft_atoi(av[5]);
 		else
@@ -61,6 +61,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 		philo[i].last_meal = 0;
 		philo[i].t_start = 0;
 		philo[i].print = &rules->print;
+		i++;
 	}
 	return (0);
 }
@@ -74,7 +75,8 @@ int	main(int ac, char **av)
 	{
 		if (init(&rules, &philo, av) == 1)
 			return (1);
-		routine(&rules);
+		if (threads(&rules, &philo))
+			return (1);
 	}
 	else
 		printf("Error: wrong number of arguments\n");
