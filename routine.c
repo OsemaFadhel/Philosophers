@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:08:20 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 18:56:24 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:47:45 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_dead_flag(t_philo *rules)
 {
-	printf("philo dead\n");
 	if (*rules->dead == 1)
 		return (1);
 	return (0);
@@ -45,10 +44,8 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->id % 2 != 0)
 		ft_usleep(1);
-	printf("philo %d rout\n", philo->id);
 	while (!check_dead_flag(philo))
 	{
-		printf("philo rout1\n");
 		philo_eat(philo);
 		//philo_sleep(philo);
 		//philo_think(philo);

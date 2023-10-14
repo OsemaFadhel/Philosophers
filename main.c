@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 18:55:31 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:51:42 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 		else
 			philo[i].nb_meals = -1;
 		philo[i].meals_count = 0;
-		philo[i].last_meal = 0;
-		philo[i].t_start = 0;
+		philo[i].last_meal = gettime();
+		philo[i].t_start = gettime();
 		philo[i].print = &rules->print;
 		i++;
 	}
@@ -73,6 +73,7 @@ int	main(int ac, char **av)
 
 	if (ac == 5 || ac == 6)
 	{
+		gettime();
 		if (init(&rules, &philo, av) == 1)
 			return (1);
 		if (threads(&rules, &philo))

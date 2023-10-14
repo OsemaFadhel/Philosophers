@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 23:03:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 18:07:36 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:59:17 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	ft_atoi(const char	*str)
 
 void	print(int time, int i, char *message, t_philo *philo)
 {
-	pthread_mutex_lock(philo[i].print);
+	pthread_mutex_lock(philo->print);
 	printf("%d %d %s", time, i, message);
-	pthread_mutex_unlock(philo[i].print);
+	pthread_mutex_unlock(philo->print);
 }
 
 int	ft_usleep(int time)
