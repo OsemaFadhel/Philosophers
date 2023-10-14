@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/13 21:44:07 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:11:49 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ typedef struct s_rules
 	int				dead_flag;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks[MAX_PHILOSOPHERS];
-	t_philo			*philo;
-
+	t_philo			*philo[MAX_PHILOSOPHERS];
 }				t_rules;
 
 //-------------functions-----------------

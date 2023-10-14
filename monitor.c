@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/13 21:25:19 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:18:34 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	*monitor(void *arg)
 	while (1)
 	{
 		i = 0;
-		while (i < monitor->philo->nb_philo)
+		while (i < monitor->philo[0]->nb_philo)
 		{
 			if (check_dead(monitor, i))
 			{
