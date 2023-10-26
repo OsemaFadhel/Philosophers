@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 17:18:34 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/26 16:48:56 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	end_meals(t_rules *rules)
 	int	i;
 
 	i = 0;
-	while (i < rules->philo->nb_philo)
+	while (i < rules->philo[i]->nb_philo)
 	{
 		if (rules->philo[i].meals_count < rules->philo[i].nb_meals)
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 void	*monitor(void *arg)
