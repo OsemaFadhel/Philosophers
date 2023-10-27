@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:08:20 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/26 17:02:10 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/27 19:34:14 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	check_dead_flag(t_philo *rules)
 void	philo_eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
-	print(gettime() - philo->t_start, philo->id, " has taken a fork\n", philo);
+	print(gettime() - philo->t_start, philo->id, " has taken a r fork\n", philo);
 	pthread_mutex_lock(philo->l_fork);
-	print(gettime() - philo->t_start, philo->id, " has taken a fork\n", philo);
+	print(gettime() - philo->t_start, philo->id, " has taken a l fork\n", philo);
 	print(gettime() - philo->t_start, philo->id, " is eating\n", philo);
 	philo->last_meal = gettime();
 	ft_usleep(philo->t_eat);

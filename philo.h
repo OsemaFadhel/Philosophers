@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/14 18:46:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/27 19:19:41 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ typedef struct s_philo
 typedef struct s_rules
 {
 	pthread_t		god;
+	int				nb_philo;
 	int				dead_flag;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks[MAX_PHILOSOPHERS];
-	t_philo			*philo[MAX_PHILOSOPHERS];
+	t_philo			*philo;
 }				t_rules;
 
 //-------------functions-----------------
@@ -68,8 +69,8 @@ int				threads(t_rules *monitor, t_philo *philo);
 
 //monitor
 
-int				check_dead(t_rules *rules, int i);
-int				end_meals(t_rules *rules);
+int				check_dead(t_philo *philo, int i);
+int				end_meals(t_philo *philo);
 void			*monitor(void *arg);
 
 //routine
