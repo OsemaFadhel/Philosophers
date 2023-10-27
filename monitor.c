@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/27 19:33:33 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 00:10:43 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,31 @@
 
 #include "philo.h"
 
-int	check_dead(t_philo *philo, int i)
+int	check_dead(t_rules *philo, int i)
 {
-	if (gettime() - philo[i].last_meal > philo[i].t_die)
+	t_philo	*philos;
+
+	philos = philo->philo;
+	printf("check dead %d\n", philo->dead_flag);
+	printf("hello %d\n", gettime() - philo->philo[i].last_meal);
+	if (gettime() - philo->philo[i].last_meal > philo->philo[i].t_die)
 	{
-		printf("%d\n", philo[i].t_die);
-		printf("%d\n", gettime() - philo[i].last_meal);
-		print(gettime() - philo[i].t_start, i + 1, " died\n", philo);
-		philo[i].dead = 1;
+		print(gettime() - philo->philo[i].t_start, i + 1, " died\n", philos);
+		printf("check dead 2 %d\n", philo->dead_flag);
+		philo->dead_flag = 1;
 		return (1);
 	}
 	return (0);
 }
 
-int	end_meals(t_philo *philo)
+int	end_meals(t_rules *philo)
 {
 	int	i;
 
 	i = 0;
 	while (i < philo[i].nb_philo)
 	{
-		if (philo[i].meals_count < philo[i].nb_meals)
+		if (philo->philo[i].meals_count < philo->philo[i].nb_meals)
 			return (1);
 		i++;
 	}
@@ -44,27 +48,28 @@ int	end_meals(t_philo *philo)
 
 void	*monitor(void *arg)
 {
-	t_philo	*monitor;
+	t_rules	*monitor;
 	int		i;
 	int		flag;
 
-	flag = 0;
-	monitor = (t_philo *)arg;
-	while (flag == 0)
+	monitor = (t_rules *)arg;
+	printf("monitor %d\n", monitor->dead_flag);
+	while (monitor->dead_flag == 0)
 	{
 		i = 0;
 		while (i < monitor->nb_philo)
 		{
-			if (check_dead(monitor, i))
+			if (check_dead(monitor, i) == 1)
 			{
-				flag = 1;
+				printf("ciao\n");
+				monitor->dead_flag = 1;
 				break ;
 			}
 			i++;
 		}
 		if (end_meals(monitor))
-			flag = 1;
+			monitor->dead_flag = 1;
 	}
-	printf("end monitor\n");
+	printf("monitor %d\n", monitor->dead_flag);
 	return (arg);
 }

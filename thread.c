@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 18:10:29 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/27 19:14:12 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 00:01:12 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	threads(t_rules *rules, t_philo *philo)
 	int	i;
 
 	i = 0;
-	if (pthread_create(&rules->god, NULL, &monitor, rules->philo))
+	if (pthread_create(&rules->god, NULL, &monitor, rules))
 		return (1);
 	while (i < philo->nb_philo)
 	{

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/27 19:19:41 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 00:04:20 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int				threads(t_rules *monitor, t_philo *philo);
 
 //monitor
 
-int				check_dead(t_philo *philo, int i);
-int				end_meals(t_philo *philo);
+int				check_dead(t_rules *philo, int i);
+int				end_meals(t_rules *philo);
 void			*monitor(void *arg);
 
 //routine
