@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 19:16:08 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 23:13:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int	main(int ac, char **av)
 			return (1);
 		if (threads(&rules, philo))
 			return (1);
+		destroy(&rules, philo);
 	}
 	else
 		printf("Error: wrong number of arguments\n");
-	destroy(&rules, philo);
 }
