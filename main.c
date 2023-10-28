@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 05:00:43 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 05:29:31 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 		init_2(rules, philo, i, av);
 		philo[i].is_eating = 0;
 		philo[i].dead = &rules->dead;
-		if (av[5])
+		if (av[5] != NULL)
 			philo[i].nb_meals = ft_atoi(av[5]);
 		else
 			philo[i].nb_meals = -1;
@@ -75,7 +75,6 @@ int	main(int ac, char **av)
 	rules.philo = philo;
 	if (ac == 5 || ac == 6)
 	{
-		gettime();
 		if (init(&rules, philo, av) == 1)
 			return (1);
 		if (threads(&rules, philo))
