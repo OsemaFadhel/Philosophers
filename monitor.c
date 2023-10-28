@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 04:33:29 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 05:04:11 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
-		if (end_meals(monitor))
+		if (end_meals(monitor) == 0)
 			monitor->dead = 1;
 	}
 	return (arg);
