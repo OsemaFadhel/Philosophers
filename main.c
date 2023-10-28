@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/27 19:33:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 04:26:19 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 {
 	int	i;
 
-	rules->dead_flag = 0;
+	rules->dead = 0;
 	rules->nb_philo = ft_atoi(av[1]);
 	if (pthread_mutex_init(&rules->print, NULL))
 		return (1);
@@ -53,7 +53,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 		philo[i].id = i + 1;
 		init_2(rules, philo, i, av);
 		philo[i].is_eating = 0;
-		philo[i].dead = &rules->dead_flag;
+		philo[i].dead = &rules->dead;
 		if (av[5])
 			philo[i].nb_meals = ft_atoi(av[5]);
 		else
@@ -72,6 +72,7 @@ int	main(int ac, char **av)
 	t_rules	rules;
 	t_philo	philo[MAX_PHILOSOPHERS];
 
+	rules.philo = philo;
 	if (ac == 5 || ac == 6)
 	{
 		gettime();
