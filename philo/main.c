@@ -6,11 +6,24 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 05:29:31 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 19:16:08 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	destroy(t_rules *rules, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_destroy(&rules->print);
+	while (i < philo->nb_philo)
+	{
+		pthread_mutex_destroy(&rules->forks[i]);
+		i++;
+	}
+}
 
 void	forks_init(t_rules *rules, int nb_philo)
 {
@@ -54,7 +67,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 		init_2(rules, philo, i, av);
 		philo[i].is_eating = 0;
 		philo[i].dead = &rules->dead;
-		if (av[5] != NULL)
+		if (av[5])
 			philo[i].nb_meals = ft_atoi(av[5]);
 		else
 			philo[i].nb_meals = -1;
@@ -75,6 +88,7 @@ int	main(int ac, char **av)
 	rules.philo = philo;
 	if (ac == 5 || ac == 6)
 	{
+		gettime();
 		if (init(&rules, philo, av) == 1)
 			return (1);
 		if (threads(&rules, philo))
@@ -82,4 +96,5 @@ int	main(int ac, char **av)
 	}
 	else
 		printf("Error: wrong number of arguments\n");
+	destroy(&rules, philo);
 }

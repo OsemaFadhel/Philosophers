@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 05:28:37 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/28 20:34:18 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_dead(t_rules *philo, int i)
 	t_philo	*philos;
 
 	philos = philo->philo;
-	if (gettime() - philo->philo[i].last_meal >= philo->philo[i].t_die)
+	if (gettime() - philo->philo[i].last_meal > philo->philo[i].t_die)
 	{
 		print(gettime() - philo->philo[i].t_start, i + 1, " died\n", philos);
 		philo->dead = 1;
@@ -47,7 +47,6 @@ void	*monitor(void *arg)
 {
 	t_rules	*monitor;
 	int		i;
-	int		flag;
 
 	monitor = (t_rules *)arg;
 	while (monitor->dead == 0)
@@ -62,7 +61,7 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
-		if (end_meals(monitor) == 0 && monitor->philo[0].nb_meals != -1)
+		if (end_meals(monitor))
 			monitor->dead = 1;
 	}
 	return (arg);
