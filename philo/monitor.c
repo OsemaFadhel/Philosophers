@@ -37,10 +37,10 @@ int	end_meals(t_rules *philo)
 	while (i < philo[i].nb_philo)
 	{
 		if (philo->philo[i].meals_count < philo->philo[i].nb_meals)
-			return (1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 void	*monitor(void *arg)
@@ -61,7 +61,7 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
-		if (end_meals(monitor))
+		if (end_meals(monitor) && monitor->philo[0].nb_meals >= 0)
 			monitor->dead = 1;
 			//maybe break but check philo routine to stop
 	}
