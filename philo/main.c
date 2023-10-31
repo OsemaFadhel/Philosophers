@@ -88,7 +88,6 @@ int	main(int ac, char **av)
 	rules.philo = philo;
 	if (ac == 5 || ac == 6)
 	{
-		gettime();
 		if (init(&rules, philo, av) == 1)
 			return (1);
 		if (threads(&rules, philo))
