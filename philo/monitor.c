@@ -63,6 +63,7 @@ void	*monitor(void *arg)
 		}
 		if (end_meals(monitor))
 			monitor->dead = 1;
+			//maybe break but check philo routine to stop
 	}
 	return (arg);
 }
