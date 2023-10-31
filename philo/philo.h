@@ -30,12 +30,12 @@ typedef struct s_philo
 	pthread_t		thread;
 	int				id;
 	int				nb_philo;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
+	long			t_die;
+	long			t_eat;
+	long			t_sleep;
 	int				is_eating;
 	int				*dead;
-	int				nb_meals;
+	long			nb_meals;
 	int				meals_count;
 	int				last_meal;
 	int				t_start;
