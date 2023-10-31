@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	ft_atoi(const char	*str)
+long	ft_atoi(const char	*str)
 {
 	int					i;
 	int					neg;
