@@ -51,7 +51,7 @@ typedef struct s_rules
 	int				dead;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks[MAX_PHILOSOPHERS];
-	t_philo			*philo;
+	t_philo			*philo[MAX_PHILOSOPHERS];
 }				t_rules;
 
 //-------------functions-----------------
