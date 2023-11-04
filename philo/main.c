@@ -83,7 +83,7 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 int	main(int ac, char **av)
 {
 	t_rules	rules;
-	t_philo	philo[MAX_PHILOSOPHERS];
+	t_philo	philo;
 
 	rules.philo = philo;
 	if (ac == 5 || ac == 6)
