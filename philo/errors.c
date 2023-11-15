@@ -34,7 +34,7 @@ int	check_errors(int argc, char **argv)
 		{
 			if (!ft_isdigit(argv[i][j]))
 			{
-				printf("Error: Invalid argument\n");
+				printf("Error: Invalid argument \n");
 				return (0);
 			}
 		}
