@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 23:03:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 19:13:00 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/31 17:53:26 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long	ft_atoi(const char	*str)
 {
-	int					i;
-	int					neg;
-	unsigned long int	num;
+	int		i;
+	int		neg;
+	long	num;
 
 	i = 0;
 	neg = 1;

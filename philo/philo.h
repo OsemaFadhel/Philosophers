@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 04:17:34 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:01:26 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_rules
 	int				dead;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks[MAX_PHILOSOPHERS];
-	t_philo			*philo[MAX_PHILOSOPHERS];
+	t_philo			*philo;
 }				t_rules;
 
 //-------------functions-----------------
@@ -61,7 +61,8 @@ typedef struct s_rules
 int				gettime(void);
 int				ft_usleep(int time);
 void			print(int time, int i, char *message, t_philo *rules);
-int				ft_atoi(const char	*str);
+long			ft_atoi(const char	*str);
+int				check_errors(int argc, char **argv);
 
 //threads
 

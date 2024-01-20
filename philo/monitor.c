@@ -6,12 +6,9 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:47:05 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 20:34:18 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/31 20:46:14 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//return 1 = close
-//return 0 = continue
 
 #include "philo.h"
 
@@ -61,9 +58,8 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
-		if (end_meals(monitor) && monitor->philo[0].nb_meals >= 0)
+		if (end_meals(monitor) && monitor->philo[0].nb_meals != -1)
 			monitor->dead = 1;
-			//maybe break but check philo routine to stop
 	}
 	return (arg);
 }

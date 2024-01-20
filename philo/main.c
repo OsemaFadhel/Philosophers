@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:32:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/10/28 23:13:10 by ofadhel          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:02:50 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,13 @@ int	init(t_rules *rules, t_philo *philo, char **av)
 int	main(int ac, char **av)
 {
 	t_rules	rules;
-	t_philo	philo;
+	t_philo	philo[MAX_PHILOSOPHERS];
 
 	rules.philo = philo;
 	if (ac == 5 || ac == 6)
 	{
+		if (check_errors(ac, av))
+			return (1);
 		if (init(&rules, philo, av) == 1)
 			return (1);
 		if (threads(&rules, philo))
